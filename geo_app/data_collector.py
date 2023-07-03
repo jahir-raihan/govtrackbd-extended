@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from datetime import datetime
 import time
 from .models import Project
 requests.packages.urllib3.disable_warnings()
@@ -65,6 +66,9 @@ class LgedCrawler:
 
         data = self.__dic
 
+        for k, v in data.items():
+            print(k, ' : ', v)
+
         if data['Project Code'] == '':
             return
 
@@ -75,8 +79,8 @@ class LgedCrawler:
 
         proj.project_name = data['Project Name']
         proj.pd_name = data['Name of PD']
-        proj.start_date = data['Start Date']
-        proj.completion_date = data['Completion Date']
+        proj.start_date = datetime.strptime(data['Start Date'], '%b-%Y')
+        proj.completion_date = datetime.strptime(data['Completion Date'], '%b-%Y')
         proj.funded_by = data['Funded By']
         proj.budget = data['Budget']
         proj.sector = data['Sector']
@@ -137,7 +141,7 @@ class NdReCrawler:
         self.scrap_data()
 
     def collect_sids(self):
-
+        website
         """Collects sids by crawling over NDRE website and crawls until it reaches the end"""
 
         # Loop terminator
@@ -242,7 +246,7 @@ class NdReCrawler:
         proj.project_name = dic['System Name']
         proj.technology_type = dic['Technology Type']
         proj.capacity = dic['Capacity']
-        proj.completion_date = dic['Completion Date']
+        proj.completion_date = datetime.strptime(dic['Completion Date'], '%Y-%m-%d')
         proj.present_status = dic['Present Status']
         proj.funded_by = dic['Financing Org.']
         proj.implementing_agency = dic['Implementing Agency']
