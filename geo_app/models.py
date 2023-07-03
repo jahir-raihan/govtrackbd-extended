@@ -7,9 +7,11 @@ class Project(models.Model):
 
     project_name = models.CharField(max_length=500)
     implementing_agency = models.CharField(max_length=200)
-    project_code = models.IntegerField()
-    start_date = models.DateTimeField(null=True, blank=True)
-    completion_date = models.DateTimeField(null=True, blank=True)
+    technology_type = models.CharField(max_length=100, null=True, blank=True)
+    capacity = models.CharField(max_length=20, null=True, blank=True)
+    project_code = models.IntegerField(null=True, blank=True)
+    start_date = models.CharField(max_length=20, null=True, blank=True)
+    completion_date = models.CharField(max_length=20, null=True, blank=True)
     budget = models.CharField(max_length=20, null=True, blank=True, default='N/A')
     division = models.CharField(max_length=20, null=True, blank=True, default='N/A')
     district = models.CharField(max_length=20, null=True, blank=True, default='N/A')
@@ -25,7 +27,7 @@ class Project(models.Model):
 
     pd_name = models.CharField(max_length=30, null=True, blank=True, default='N/A')
     date_of_approval = models.CharField(max_length=15, null=True, blank=True, default='N/A')
-    cumulative_expenditure = models.CharField(max_length=30, null=True, blank=True, default='N/A')
+    cumulative_expenditure = models.CharField(max_length=50, null=True, blank=True, default='N/A')
 
     physical_progress = models.CharField(max_length=5, null=True, blank=True, default='N/A')
     short_title = models.CharField(max_length=20, null=True, blank=True, default='N/A')
@@ -33,7 +35,7 @@ class Project(models.Model):
     sector = models.CharField(max_length=25, null=True, blank=True, default='N/A')
     status = models.CharField(max_length=100, null=True, blank=True, default='N/A')
     funded_by = models.CharField(max_length=30, null=True, blank=True, default='N/A')
-    image = models.ImageField(upload_to='project_images', null=True, blank=True, default='N/A')
+    image = models.CharField(max_length=150, null=True, blank=True, default='N/A')
 
     progress_reporting_date = models.CharField(max_length=15, null=True, blank=True, default='N/A')
     ministry = models.CharField(max_length=50, null=True, blank=True, default='N/A')
