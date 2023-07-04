@@ -102,14 +102,14 @@
 
                     <label for="category" style="opacity:.7">Search</label>
 
-                    <input type="text" placeholder="search by anything . . ." class="search-by-anything">
+                    <input type="text" id="keyword" oninput="filter_data()" placeholder="search by anything . . ." class="search-by-anything">
 
                     <label for="category" style="opacity:.7">Filter by Category</label>
 
-                    <select name="category" id="category" style="opacity:.8" onchange="filter_data()" class="category">
+                    <select name="category" id="agency" style="opacity:.8" onchange="filter_data()" class="category">
                         <option value selected>-------------</option>
-                        {% for data in category %}
-                            <option value="{{data.id}}">{{data.agency_name}}</option>
+                        {% for data in agencies %}
+                            <option value="{{data}}">{{data}}</option>
                         {% endfor %}
                     </select>
 
@@ -141,8 +141,8 @@
                         <div id="s-proj">
                             <select name="project" required id="id_project"  class="category">
                                 <option value>-------------</option>
-                                {% for data in details %}
-                                    <option value="{{data.id}}">{{data.project_name}}</option>
+                                {% for data in projects %}
+                                    <option value="{{data.project_id}}">{{data.project_name}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -155,61 +155,20 @@
             <div class="detail-field" id="detail-field" style="width:100%;">
 
                 <div class="loader d-none" id="loader"></div>
-                <p class="d-f-c-txt" id='d-f-c-txt'>After your search Details will appear here, and Geolocations will appear below.</p>
-                <div class="detail-box d-none" id="detail-box">
-                    <div class="report">
-                        <div class="blank"></div>
-                        <input type="hidden" id="issue-hidden-val">
-                        <input type="hidden" id="issue-hidden-id">
-                        <button onclick="on()">Feedback</button>
-                    </div>
-                    <div class="detail">
-                        <div class="d-1">
-                            <p class="d-title">Project Name : </p>
-                            <p id="project-name"></p>
-                        </div>
+                <p class="d-f-c-txt" id='d-f-c-txt'>After your search <b> Visual</b>  will appear here, and <b>Details</b>  will appear below.</p>
+                
+                 <div class="section-map section-visual" id="section-visual" style="height:100%">
 
-                        <div class="d-1">
-                            <p class="d-title">Affiliated Agency : </p>
-                            <p id="affiliated-agency"></p>
-                        </div>
-                        <div class="d-1">
-                            <p class="d-title">Goal : </p>
-                            <p id="description"></p>
-                        </div>
-                        <div class="d-1">
-                            <p class="d-title">Start Time : </p>
-                            <p id="start-time"></p>
-                        </div>
-                        <div class="d-1">
-                            <p class="d-title">Estd Completion Time : </p>
-                            <p id="completion-time"></p>
-                        </div>
-                        <div class="d-1">
-                            <p class="d-title">Total Cost : </p>
-                            <p id="total-budget"></p>
-                        </div>
-                        <div class="d-1">
-                            <p class="d-title">Completion Percentage : </p>
-                            <p id="completion-percentage"></p>
-                        </div>
-                        <div class="d-1">
-                            <p class="d-title">Location : </p>
-                            <p id="time-remaining-percentage"></p>
-                        </div>
-
-
-                    </div>
                 </div>
 
             </div>
 
         </div>
 
-        <div class="section-map" id="section-map">
-            <div id="empty"></div>
-
+        <div class="project-details" id="project-details">
         </div>
+
+      
         <div class="footer"> <p> Developed by <span> Jahir Raihan Joy & cpi bug_rangers</span></p></div>
     </div>
 
