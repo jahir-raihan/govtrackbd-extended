@@ -11,7 +11,7 @@ class Project(models.Model):
     capacity = models.CharField(max_length=20, null=True, blank=True)
     project_code = models.IntegerField(null=True, blank=True)
     start_date = models.DateField(max_length=20, null=True, blank=True, default='1900-01-01')
-    completion_date = models.DateField(max_length=20, null=True, blank=True)
+    completion_date = models.DateField(max_length=20, null=True, blank=True, default='3000-01-01')
     budget = models.CharField(max_length=20, null=True, blank=True, default='N/A')
     division = models.CharField(max_length=20, null=True, blank=True, default='N/A')
     district = models.CharField(max_length=20, null=True, blank=True, default='N/A')
