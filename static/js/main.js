@@ -64,7 +64,7 @@ $(document).on('submit', '#get-project-details', function(e){
 
             if (data.img){
                 var viz = `<div class="note-img-quality">Sorry for bad quality !</div>
-                <img style="width:100%;height:95.8%;object-fit:contain;background:#000000bf; border-radius:4px; padding:.5em;"
+                <img style="width:100%;height:95.8%;color:white;object-fit:contain;background:#000000bf; border-radius:4px; padding:.5em;"
                              loading="lazy" src="${data.img}" alt="${data.title}">`;
 
             }
