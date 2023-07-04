@@ -19,6 +19,7 @@ class Project(models.Model):
     location = models.CharField(max_length=100, null=True, blank=True, default='N/A')
     latitude = models.CharField(max_length=30, null=True, blank=True, default='N/A')
     longitude = models.CharField(max_length=30, null=True, blank=True, default='N/A')
+    grid_status = models.CharField(max_length=100, null=True, blank=True, default='N/A')
 
     present_status = models.CharField(max_length=60, null=True, blank=True, default='N/A')
     note = models.TextField(null=True, blank=True, default='N/A')

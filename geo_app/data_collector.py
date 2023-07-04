@@ -254,6 +254,7 @@ class NdReCrawler:
         proj.division = dic['Division']
         proj.district = dic['District']
         proj.upazilla = dic['Upazilla']
+        proj.grid_status = dic['Grid Status']
         proj.location = dic['Location']
         proj.latitude, proj.longitude = lat_lng[0], lat_lng[1]
         proj.note = dic['Note']

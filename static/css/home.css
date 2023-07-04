@@ -313,7 +313,7 @@ tr td{
 
 .title-row td{
   opacity: .9;
-  padding:1em 0 !important;
+  padding:.5em 0 !important;
 }
 td{
   padding:.3em .5em;
@@ -374,6 +374,12 @@ td{
 }
 .section-map{
   height:100%;
+}
+
+.note-img-quality{
+  
+  color:rgb(255 75 0 / 63%);
+  font-size:13px;
 }
 
 .map{

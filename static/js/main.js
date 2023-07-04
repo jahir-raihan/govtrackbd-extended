@@ -20,15 +20,17 @@ function filter_data(){
         url:'/',
         data:{
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-            category:$('#category').val(),
+            keyword: $('#keyword').val(),
+            agency:$('#agency').val(),
             start_date:$('#time-range-start').val(),
             end_date:$('#time-range-end').val()
         }
     });
     req.done(function(data){
+        console.log(data)
         obj = '<select name="project" required id="id_project" class="category"><option value>-------------</option>'
-        for (d of data.details){
-            obj += `<option value="${d[1]}"> ${d[0]} </option>`
+        for (d of data.projects){
+            obj += `<option value="${d.project_id}"> ${d.project_name} </option>`
         }
         obj += '</select>'
         $('#s-proj').html(obj)
@@ -57,35 +59,24 @@ $(document).on('submit', '#get-project-details', function(e){
         });
         req.done(function(data){
             document.getElementById('loader').classList.add('d-none')
-            document.getElementById('detail-box').classList.remove('d-none')
+         
             document.getElementById('d-f-c-txt').classList.add('d-none')
-            var p = data.project
-            $('#project-name').html(p[0]); $('#affiliated-agency').html(p[1]);
-            $('#description').html(p[2]); $('#start-time').html(p[3]); $('#completion-time').html(p[4]);
-            $('#total-budget').html(p[5]); $('#completion-percentage').html(p[6]);
-            $('#time-remaining-percentage').html(p[8])
-            $('#section-map').html('<div id="empty"></div>');
-            document.getElementById('issue-hidden-val').setAttribute('value', p[0])
-            document.getElementById('issue-hidden-id').setAttribute('value', p[7])
-            $('#b-csrf').before(`<input type="hidden" name="csrfmiddlewaretoken" value='${data.csrf}'> `)
 
-            var cor = data.coordinates
-            i = 1
-            for (c of cor){
-                if (data.l_c > 1){
-                    cnt = `<p>Location on map (${i})</p>`
-                    i += 1
-                }
-                else{
-                    cnt = '<p> Location on map</p>'
-                }
-                tmp = `<div class="map-title">
-                            ${cnt}
-                            <iframe class="map" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=${c[0]}%2C%20${c[1]}&key=AIzaSyB8o0153cfwDCEF5s5GwjareVZb5p-5zLk"></iframe>
-                       </div>`
-                $('#empty').before(tmp)
+            if (data.img){
+                var viz = `<div class="note-img-quality">Sorry for bad quality !</div>
+                <img style="width:100%;height:95.8%;object-fit:contain;background:#000000bf; border-radius:4px; padding:.5em;"
+                             loading="lazy" src="${data.img}" alt="${data.title}">`;
 
             }
+            else {
+                var viz = `<iframe class="map" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=${data.lat}%2C%20${data.lng}&key=AIzaSyB8o0153cfwDCEF5s5GwjareVZb5p-5zLk"></iframe>`
+
+            }
+            $('#section-visual').html(viz)
+
+            $('#project-details').html(data.template)
+
+
         });
 
 
