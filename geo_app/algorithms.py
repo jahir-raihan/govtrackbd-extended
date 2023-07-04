@@ -28,21 +28,22 @@ def get_agency_and_project_names():
         }
         project_list.append(proj)
 
-    return agency_names, project_list
+    return agency_names, project_list[:100]
 
 
 def filter_projects(query):
 
     """Filters projects according to filtering criteria"""
 
-    start_date = 1900 if not query['start_date'] else query['start_date']
-    end_date = 9999 if not query['end_date'] else query['end_date']
+    start_date = 1900 if query['start_date'] == '' else query['start_date']
+    end_date = 9999 if query['end_date'] == '' else query['end_date']
 
     agency = query['agency']
     keyword = query['keyword']
 
     # Filtering by start, end dates and implementing agency
-    projects = Project.objects.filter(implementing_agency__exact=agency)
+    projects = Project.objects.filter(implementing_agency__icontains=agency)
+
     projects = projects.filter(
         Q(start_date__year__gte=int(start_date)) & Q(completion_date__year__lte=int(end_date))
     )
@@ -51,7 +52,7 @@ def filter_projects(query):
     projects = projects.filter(
         Q(project_name__icontains=keyword) | Q(project_code__icontains=keyword) |
         Q(implementing_agency__icontains=keyword) | Q(pd_name__icontains=keyword) | Q(sector__icontains=keyword) |
-        Q(approval_ref__icontains=keyword) | Q(funded_by__icontains=keyword)| Q(executing_agency__icontains=keyword)
+        Q(approval_ref__icontains=keyword) | Q(funded_by__icontains=keyword) | Q(executing_agency__icontains=keyword)
         | Q(ministry__icontains=keyword) | Q(category__icontains=keyword)
     )
 
