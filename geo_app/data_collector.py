@@ -141,7 +141,7 @@ class NdReCrawler:
         self.scrap_data()
 
     def collect_sids(self):
-        website
+
         """Collects sids by crawling over NDRE website and crawls until it reaches the end"""
 
         # Loop terminator
@@ -208,29 +208,34 @@ class NdReCrawler:
             # Finding all rows
             row = rows.find_all('tr')
 
-            # Looping over all rows
-            for r in row[1:]:
+            # Try and except block for error handling
+            try:
 
-                # Getting columns
-                col = r.find_all('td')
+                # Looping over all rows
+                for r in row[1:]:
 
-                # Adding columns to the tmp dictionary
-                dic[col[0].text.strip()] = col[2].text.strip()
+                    # Getting columns
+                    col = r.find_all('td')
 
-            # Getting second table rows, which is sub second table of the root table
-            rows1 = table[0].find_all('tr')[0].find_all('table')[1]
+                    # Adding columns to the tmp dictionary
+                    dic[col[0].text.strip()] = col[2].text.strip()
 
-            # Finding all rows init
-            row1 = rows1.find_all('tr')
+                # Getting second table rows, which is sub second table of the root table
+                rows1 = table[0].find_all('tr')[0].find_all('table')[1]
 
-            # Looping over all rows
-            for r in row1[1:]:
+                # Finding all rows init
+                row1 = rows1.find_all('tr')
 
-                # Getting all columns
-                col = r.find_all('td')
+                # Looping over all rows
+                for r in row1[1:]:
 
-                # Adding columns to the tmp dictionary
-                dic[col[0].text.strip()] = col[2].text.strip()
+                    # Getting all columns
+                    col = r.find_all('td')
+
+                    # Adding columns to the tmp dictionary
+                    dic[col[0].text.strip()] = col[2].text.strip()
+            except:
+                continue
 
             # Add to the database, or update on database
             try:
