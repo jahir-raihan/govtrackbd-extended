@@ -230,10 +230,11 @@ header nav .right .profile img {
   width:100%;
   display: grid;
   grid-template-columns: 50% 50%;
-
-  margin-top:10%;
+  margin:10% 0;
 
 }
+
+
 
 .s-f-header{
   font-size:16px;
@@ -282,11 +283,50 @@ label{
   border:.5px solid #0000003b;
 }
 
+/* Table */
+
+.proj-det-title{
+  font-weight: 500;
+  font-size:20px;
+  margin:2em 0;
+}
+
+table{
+  border-collapse:collapse;
+  border:.5px solid black;
+  width:100%;
+  background-color: white;
+  
+
+}
+
+tr td{
+  border-collapse:collapse;
+  border:.5px solid rgba(0, 0, 0, 0.245);
+}
+.title-row{
+  font-weight: 500;
+  text-align:center;
+  opacity: .9;
+  
+}
+
+.title-row td{
+  opacity: .9;
+  padding:1em 0 !important;
+}
+td{
+  padding:.3em .5em;
+  opacity: .8;
+}
+
+/* End Table */
+
 
 
 .detail-box{
   border:1px solid rgba(0, 0, 0, 0.059);
-  padding:2em;
+  padding:1em;
   background-color: white;
   box-shadow: -1px -9px 65px -41px rgba(0,0,0,0.46);
   -webkit-box-shadow: -1px -9px 65px -41px rgba(0,0,0,0.46);
@@ -332,16 +372,13 @@ label{
 .d-f-c-txt{
   text-align:center;
 }
-
-.section-map .map-title p{
-  margin:2em 0;
-  font-size:20px;
-
+.section-map{
+  height:100%;
 }
 
 .map{
   width:100%;
-  height:500px;
+  height:100%;
   border:1px solid black;
   -webkit-box-shadow: 0px 17px 22px 0px rgba(0, 0, 0, 0.16);
   box-shadow: 0px 17px 22px 0px rgba(0, 0, 0, 0.16);
@@ -515,6 +552,10 @@ label{
   .section-details{
     grid-template-columns:100%;
 
+  }
+
+  .s-c{
+    width:100% !important;
   }
   .section-details .search-field{
     width: fit-content;
