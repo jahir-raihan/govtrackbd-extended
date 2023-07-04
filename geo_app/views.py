@@ -14,7 +14,6 @@ def home(request):
 
     if request.method == 'POST':
         query = request.POST
-
         projects = filter_projects(query)
 
         return JsonResponse({'projects': projects})
