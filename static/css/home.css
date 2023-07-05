@@ -21,8 +21,8 @@ body {
 
 header {
   background: white;
-  -webkit-box-shadow: 0px 3px 14px -6px rgba(0, 0, 0, 0.84);
-  box-shadow: 0px 3px 14px -6px rgba(0, 0, 0, 0.84);
+  -webkit-box-shadow: 0px 3px 14px -6px rgb(0 0 0 / 16%);
+  box-shadow: 0px 3px 14px -6px rgb(0 0 0 / 16%);
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -70,7 +70,7 @@ header nav .left .logo {
 
 header nav .left .logo p {
   margin-left: .5em;
-  margin-top: .3em;
+  /* margin-top: .3em; */
 }
 
 header nav .right .profile {
@@ -159,7 +159,24 @@ header nav .right .profile img {
   display: none;
 }
 
+.nav-right-links{
+  
+  margin:0 1em 0 0;
+}
+.nav-right-links button:hover{
+  color:#1e1e1e;
+  color:rgb(255, 102, 8);
+  border:.5px solid rgb(255, 102, 8);
+  cursor: pointer;
+}
 
+.nav-right-links button{
+  padding:0 1em;
+  border:.5px solid #1e1e1e63;
+  border-radius: 4px;
+  background:transparent;
+  height:30px;
+}
 
 .right {
   display: -webkit-box;
@@ -193,12 +210,12 @@ header nav .right .profile img {
 .dashboard-link:hover .d-icon {
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
-  background: #000000;
-  border: 1px solid #000000;
+  background: #1e1e1e;
+  border: 1px solid #1e1e1e;
 }
 
 .bg-black .ic .d-icon {
-  background: black !important;
+  background: #1e1e1e !important;
 }
 
 
