@@ -1,8 +1,5 @@
-from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from .models import *
-from datetime import datetime
 from .algorithms import *
 from .data_collector import *
 from django.template.loader import render_to_string
