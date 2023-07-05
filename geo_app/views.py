@@ -6,6 +6,10 @@ from datetime import datetime
 from .algorithms import *
 from .data_collector import *
 from django.template.loader import render_to_string
+from django.views.decorators.csrf import csrf_exempt
+from .serializers import ProjectSerializer
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 
 def home(request):
@@ -71,3 +75,14 @@ def update_lged_projects_data(request):
 
     crawl_lged()
     return HttpResponse('Updated Successfully !')
+
+
+# API Endpoints
+
+@csrf_exempt
+@api_view(http_method_names=['GET', 'POST'])
+def get_data(request):
+
+    projects = Project.objects.all().order_by('-start_date')
+    serializer = ProjectSerializer(projects, many=True)
+    return Response(serializer.data,)
