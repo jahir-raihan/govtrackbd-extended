@@ -53,27 +53,6 @@ def get_details(request):
                          'title': project.project_name})
 
 
-def update_ndre_projects_data(request):
-
-    """Updates NDRE data"""
-
-    print('Updating database . . .')
-
-    crawl_ndre()
-
-    return HttpResponse('Updated Successfully !')
-
-
-def update_lged_projects_data(request):
-
-    """Updates LGED projects data"""
-
-    print('Updating database . . .')
-
-    crawl_lged()
-    return HttpResponse('Updated Successfully !')
-
-
 # API Endpoints
 
 @csrf_exempt

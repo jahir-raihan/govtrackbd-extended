@@ -1,6 +1,9 @@
 import datetime
+
+from .data_collector import crawl_ndre, crawl_lged
 from .models import *
 from django.db.models import Q
+
 
 def get_date_ranges():
 
@@ -71,3 +74,19 @@ def filter_projects(query):
     return project_list
 
 
+def update_ndre_projects_data():
+
+    """Updates NDRE data"""
+
+    print('Updating database . . .')
+
+    crawl_ndre()
+
+
+def update_lged_projects_data():
+
+    """Updates LGED projects data"""
+
+    print('Updating database . . .')
+
+    crawl_lged()
